@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta value="viewport" content="width=device-width, initial-scale=1">
+	<title>Simple calculator</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="container"> 
+		<div class="calculator">
+			<form>
+				<div class="display">
+					<input type="text" name="display" id="display" oninput="restrictInput(event)" >
+
+				</div>
+
+				<div>
+					<input type="button" value="AC" onclick="display.value =''">
+					<input type="button" value="DE" onclick="display.value = display.value.toString().slice(0,-1)">
+					<input type="button" value="." onclick="display.value +='.'">
+					<input type="button" value="/" onclick="display.value +='/'">
+				</div>
+
+				<div>
+					<input type="button" value="7"onclick="display.value +='7'">
+					<input type="button" value="8"onclick="display.value +='8'">
+					<input type="button" value="9"onclick="display.value +='9'">					
+					<input type="button" value="+"onclick="display.value +='+'">				
+				</div>
+
+				<div>
+					<input type="button" value="4"onclick="display.value +='4'">
+					<input type="button" value="5"onclick="display.value +='5'">
+					<input type="button" value="6"onclick="display.value +='6'">
+					<input type="button" value="-"onclick="display.value +='-'">
+				</div>
+
+				<div>
+					<input type="button" value="1"onclick="display.value +='1'">
+					<input type="button" value="2"onclick="display.value +='2'">
+					<input type="button" value="3"onclick="display.value +='3'">
+					<input type="button" value="*"onclick="display.value +='*'">
+				</div>
+
+				<div>
+					<input type="button" value="0"onclick="display.value +='0'">
+					<input type="button" value="00" onclick="display.value +='00'">
+					<input type="button" value="=" class="equal" onclick="display.value =eval(display.value)">
+					
+				</div>
+
+			</form>
+			
+		</div>
+	</div>
+
+
+	<script>
+function restrictInput(event) {
+    // Get the input element
+    var inputElement = event.target;
+
+    // Define the allowed characters using a regular expression
+    var allowedCharacters = /[0-9=\-\/\*\.,]/;
+
+    // Get the entered character
+     var enteredChar = inputElement.value.slice(-1);
+
+    // Check if the entered character is allowed
+    if (!allowedCharacters.test(enteredChar)) {
+        // If not allowed, remove the last character
+        inputElement.value = inputElement.value.slice(0, -1);
+    }
+}
+</script>
+
+</body>
+</html> 
